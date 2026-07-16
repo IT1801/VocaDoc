@@ -9,7 +9,7 @@ A personalized AI-powered voice assistant with ultra-low latency, built using Fa
 - **Ultra-Low Latency**: Optimized voice processing pipeline using Deepgram and Groq.
 - **Vector Search**: High-performance semantic search powered by Qdrant.
 - **Background Tasks**: Celery and Redis for asynchronous document processing and worker tasks.
-- **Observability**: OpenTelemetry and Jaeger integrated for comprehensive tracing and monitoring.
+
 
 ## 🏗 Tech Stack
 
@@ -17,7 +17,7 @@ A personalized AI-powered voice assistant with ultra-low latency, built using Fa
 - **Frontend**: Flask, HTML/JS
 - **Voice Pipeline**: Deepgram SDK, Groq, PyTorch, torchaudio
 - **Vector Database**: Qdrant
-- **Relational Database**: PostgreSQL
+
 - **Cache & Message Broker**: Redis
 - **Task Queue**: Celery
 - **Containerization**: Docker & Docker Compose
@@ -36,7 +36,7 @@ Ensure you have a `.env` file in the root directory. You can configure your nece
 
 ### 2. Running the Backend Infrastructure
 
-To start the infrastructure (Redis, Postgres, Qdrant, Jaeger) and the API in development mode, simply run:
+To start the infrastructure (Redis, Qdrant) and the API in development mode, simply run:
 
 ```bash
 make dev
@@ -81,7 +81,7 @@ Once the backend is running, you can access the interactive API documentation at
 - `GET /health` - API health check
 - `/api/v1/voice/*` - WebSocket and REST endpoints for voice interaction
 - `/api/v1/documents/*` - Endpoints for document upload and RAG management
-- `/api/v1/users/*` - User management
+
 
 ## 🛠 Development Commands
 
@@ -92,8 +92,7 @@ The `Makefile` includes several helpful commands:
 - `make test`: Run all tests with coverage.
 - `make test-unit`: Run only unit tests.
 - `make test-integration`: Run integration tests.
-- `make migrate`: Apply database migrations using Alembic.
-- `make migrate-new msg="your_message"`: Autogenerate a new database migration.
+
 - `make lint`: Run Ruff and Black to check code formatting.
 - `make format`: Auto-format code with Black and Ruff.
 - `make clean`: Clean up Python cache and compiled files.

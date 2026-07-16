@@ -1,7 +1,7 @@
 .PHONY: dev frontend test build migrate lint clean ingest
 
 dev:
-	docker-compose up -d redis postgres qdrant jaeger
+	docker-compose up -d redis qdrant
 	cd services/api && uvicorn main:app --reload --port 8000
 
 frontend:

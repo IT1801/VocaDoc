@@ -10,7 +10,7 @@ services:
       - .env
     depends_on:
       - redis
-      - postgres
+
       - qdrant
     volumes:
       - ./services/api:/app
@@ -24,7 +24,7 @@ services:
       - .env
     depends_on:
       - redis
-      - postgres
+
     command: celery -A main.celery_app worker --loglevel=info
 
   redis:
@@ -34,16 +34,6 @@ services:
     volumes:
       - redis_data:/data
 
-  postgres:
-    image: postgres:16-alpine
-    environment:
-      POSTGRES_DB: voiceai
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secret
-    ports:
-      - "15432:5432"
-    volumes:
-      - pg_data:/var/lib/postgresql/data
 
   qdrant:
     image: qdrant/qdrant:latest
@@ -52,15 +42,9 @@ services:
     volumes:
       - qdrant_data:/qdrant/storage
 
-  jaeger:
-    image: jaegertracing/all-in-one:1.57
-    ports:
-      - "16686:16686"
-      - "4317:4317"
-    environment:
-      COLLECTOR_OTLP_ENABLED: "true"
+
 
 volumes:
   redis_data:
-  pg_data:
+
   qdrant_data:

@@ -29,7 +29,6 @@ class Settings(BaseSettings):
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000"]
 
     # ── Database ───────────────────────────────────────────────
-    DATABASE_URL: str = Field(..., env="DATABASE_URL")
     REDIS_URL: str = Field(default="redis://localhost:6379/0", env="REDIS_URL")
 
     # ── AI Services ────────────────────────────────────────────
@@ -50,13 +49,7 @@ class Settings(BaseSettings):
     RAG_MIN_SCORE: float = Field(default=0.2, env="RAG_MIN_SCORE")
 
     # ── Observability ──────────────────────────────────────────
-    LANGFUSE_PUBLIC_KEY: str = Field(default="", env="LANGFUSE_PUBLIC_KEY")
-    LANGFUSE_SECRET_KEY: str = Field(default="", env="LANGFUSE_SECRET_KEY")
-    LANGFUSE_HOST: str = Field(default="http://localhost:3000", env="LANGFUSE_HOST")
-    SENTRY_DSN: str = Field(default="", env="SENTRY_DSN")
-    OTEL_ENDPOINT: str = Field(
-        default="http://localhost:4317", env="OTEL_EXPORTER_OTLP_ENDPOINT"
-    )
+
 
     class Config:
         env_file_encoding = "utf-8"
